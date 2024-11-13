@@ -1,0 +1,155 @@
+/* Main section with background image */
+.events-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    background-image: url('https://a3pictures.s3.us-east-1.amazonaws.com/2400-healthy-and-fresh-foods-in-a-flat-lay-arrangement-with-a-large-copy-space-at-the-corner-ai-generative.jpg');
+    background-size: cover; /* Ensures the image covers the entire section */
+    color: white; /* Text color */
+    text-align: left; /* Align text to the left */
+}
+
+/* Left Section Styling */
+.left-section {
+    width: 40%;
+}
+
+.left-section h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.left-section p {
+    font-size: 18px;
+    color: #cccccc;
+}
+
+/* Right Section (Event Cards) */
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+}
+
+/* Event Card Styling */
+.event-card {
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Event Date Box */
+.event-date {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 15px;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+}
+
+/* Dark Background for Event Date */
+.dark-bg {
+    background-color: #333;
+}
+
+/* Pink Background for Event Date (Highlighted) */
+.pink-bg {
+    background-color: #ff0056;
+}
+
+/* Event Description */
+.event-description h2 {
+    font-size: 22px;
+    margin: 15px 0;
+}
+
+.event-description p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* View Details Button */
+.Register-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    text-align: center;
+    background-color: white;
+    color: #ff0056;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.Register-btn:hover {
+    background-color: #f2f2f2;
+}
+
+/* Pink Button for Highlighted Event */
+.pink-btn {
+    background-color: #ff0056;
+    color: white;
+}
+
+.pink-btn:hover {
+    background-color: #e6004f;
+}
+
+/* Modal Styles */
+#registrationModal, #loginModal {
+    display: none; 
+    background-color: rgba(0,0,0,0.7);
+    padding: 20px; 
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    z-index: 1000; 
+    color: white;
+    width: 300px; /* Modal width */
+}
+
+.event-date {
+    text-align: left;
+    font-size: 0.9em;
+    color: black;
+    margin-top: 0.2em;
+    margin-bottom: 0.5em;
+    display: block;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.event-description {
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.instagram-feed {
+    margin-top: 50px;
+}
+
+.instagram-posts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.instagram-post {
+    width: 300px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.instagram-post img,
+.instagram-post video {
+    width: 100%;
+    height: auto;
+}
+

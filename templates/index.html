@@ -41,12 +41,10 @@
     </div>
 </section>
 
-<!-- Admin Button -->
 <div class="admin-button-container">
-    <a href="/admin" id="admin-btn" class="admin-btn">Admin Page</a> <!-- Redirects directly to admin page -->
+    <a href="/admin" id="admin-btn" class="admin-btn">Admin Page</a> 
 </div>
 
-<!-- Registration Modal -->
 <div id="registrationModal" style="display: none;">
     <h2>Register for <span id="eventTitle"></span></h2>
     <form id="registrationForm">
@@ -60,21 +58,18 @@
 </div>
 
 <script>
-    // Show registration modal when register button is clicked
     $(".Register-btn").click(function(e) {
         e.preventDefault();
         const eventName = $(this).data("event");
         $("#eventTitle").text(eventName);
         $("#eventName").val(eventName);
-        $("#registrationModal").show(); // Show the registration modal
+        $("#registrationModal").show(); 
     });
 
-    // Close the registration modal
     function closeRegistrationModal() {
-        $("#registrationModal").hide(); // Hide the modal
+        $("#registrationModal").hide(); 
     }
 
-    // Handle registration form submission
     $("#registrationForm").on("submit", function(e) {
         e.preventDefault();
         const name = $("#name").val();
@@ -82,14 +77,12 @@
         const phone = $("#phone").val();
         const eventName = $("#eventName").val();
 
-        // Prepare form data
         var formData = new FormData();
         formData.append('name', name);
         formData.append('email', email);
         formData.append('phone', phone);
         formData.append('eventName', eventName);
 
-        // Perform AJAX request to register
         fetch('/register', {
             method: 'POST',
             body: formData
@@ -97,12 +90,9 @@
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                // Update the remaining capacity dynamically
                 document.getElementById('remainingCapacity-' + eventName).textContent = data.remaining_capacity;
-
-                // Optionally, show a success message or update the UI further
                 alert(data.message);
-                closeRegistrationModal(); // Close the modal after successful registration
+                closeRegistrationModal(); 
             } else {
                 alert(data.message);
             }

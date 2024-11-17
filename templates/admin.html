@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Update Event</title>
     <style>
-        /* Modal style for login */
         .modal {
             display: none;
             position: fixed;
@@ -36,11 +35,33 @@
             cursor: pointer;
         }
         #eventForm { display: none; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        .event {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .event img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Login Modal -->
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -58,7 +79,27 @@
 
     <h1>Update Event Details</h1>
 
-    <!-- Event Update Form -->
+    <h2>Events Available for Update</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Event Date</th>
+                <th>Event Capacity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+                <tr>
+                    <td>{{ event.event_name }}</td>
+                    <td>{{ event.event_date }}</td>
+                    <td>{{ event.remaining_capacity }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Update Selected Event</h2>
     <form id="eventForm" action="/update-event" method="POST">
         <label for="eventName">Event Name:</label>
         <select id="eventName" name="event_name" onchange="populateEventDetails(this.value)">
@@ -86,7 +127,6 @@
         <button type="submit">Update Event</button>
     </form>
 
-    <!-- Admin Button -->
     <div class="admin-button-container">
         <a href="#" id="admin-btn" class="admin-btn">Admin Page</a>
     </div>
@@ -95,18 +135,15 @@
         var modal = document.getElementById("loginModal");
         var eventForm = document.getElementById("eventForm");
 
-        // Show login modal when the admin button is clicked
         document.getElementById("admin-btn").onclick = function (e) {
             e.preventDefault();
             modal.style.display = "block";
         };
 
-        // Close the modal when the user clicks the close button
         document.querySelector(".close").onclick = function () {
             modal.style.display = "none";
         };
 
-        // Handle the form submission for login
         document.getElementById("loginForm").onsubmit = function (e) {
             e.preventDefault();
 
@@ -131,11 +168,8 @@
             });
         };
 
-        // Use a fallback to ensure events is an empty array if undefined
         var selectedEvent = JSON.parse('{{ events | tojson | safe if events else "[]" }}');
 
-
-        // Populate event details when an event is selected
         function populateEventDetails(eventName) {
             var eventDetails = selectedEvent.find(function(event) {
                 return event.event_name === eventName;
